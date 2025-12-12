@@ -1,0 +1,24 @@
+Format = Pipe
+
+# define the Spectrum path
+Spec_dirc = Spectra/2D/Tau.ft2
+
+# define the network path
+Dirc_2D = Trained/Probability_2D/US
+
+# delation along indirect dimention (by defult it is 1 and in 2D, Skip_1 is not needed)
+Skip_0 = 1
+
+# thereshold (It is used for 2D)
+Spe_The = 0.5
+
+# Peak List params
+# produce P3P peak list?
+PL = YES
+# probability thereshould 
+PL_The = 0.2
+# PN - use Pos and Neg  peaks 
+PN_Peak = P
+
+#By defult is None BUT change if the spectrum has nut standard name such as: N15HSQC, HMQC, HNCO, HNCA, HNcoCA, HNcaCO, CBCANH, CBCAcoNH
+Spec_type = HSQC
