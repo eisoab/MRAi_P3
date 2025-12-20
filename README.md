@@ -43,6 +43,7 @@ conda install jupyter
 * Type `yes` if prompted. This may take a few minutes.
   
 9. Once completed, close the terminal.
+
 ---
 ## Post-installation Check
 1. Open Terminal in the `MRAi_P3-main` folder.
@@ -65,10 +66,12 @@ Abort`
 This means `MRAi_P3` is not compatible with your machine (e.g. Apple Silicon M-series Macs).
 7. In case of incompatibility, we recommend running `MRAi_P3` on [NMRbox](https://nmrbox.org
 ), where all dependencies are supported.
+
 ---
 ## Additional Requirement
 To access peak lists in NMRPipe format, the [NMRPipe](https://www.ibbr.umd.edu/nmrpipe) package must be installed separately. Without NMRPipe, peak list export in Pipe format will not be available. We recommend running `MRAi_P3` on [NMRbox](https://nmrbox.org
 ), where all dependencies are supported.
+
 ---
 ## Usage
 1. Open Terminal in `MRAi_P3-main` folder.
@@ -83,6 +86,7 @@ jupyter notebook
 4. Open and run Jupyter notebook (`P3_Notebook.ipynb`), following the instructions provided in the file.
 
 5. If necessary, restart the kernel and then shut down any open Jupyter instances before running a new notebook.
+
 ---
 ## Uninstallation
 If it is needed to uninstall the entire environment, open a terminal in the `base` Conda environment and remove the `mrai_p3` environment with:
