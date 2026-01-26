@@ -32,7 +32,7 @@ conda activate mrai_p3
 ```
 7. Install `MRAi_P3` with:
 ```python
-pip install MRAi_P3-0.0.0-py3-none-any.whl
+pip install MRAi_P3-1.0.0-py3-none-any.whl
 ```
 * Installation may take a few minutes.
   

@@ -3,11 +3,14 @@ Format = Pipe
 # define the Spectrum path
 Spec_dirc = Spectra/3D_Malt/CBCANH.ft3
 
+# path to save the P3 processed spectrum
+P3_dirc = Spectra/3D_CaM/CBCAcoNH.P3
+
 # define the network path
 Dirc_2D = Trained/Probability_2D/PR
 Dirc_3D = Trained/Probability_3D
 
-# delation along indirect dimention (by defult it is 1 and in 2D, Skip_1 is not needed)
+# delation along indirect dimention (by defult it is 1)
 Skip_0 = 1
 Skip_1 = 1 
 
@@ -31,12 +34,12 @@ PN_The = 0.01
 Proj = YES
 
 # Peak List params
-# produce P3P peak list?
+# produce P5 peak list?
 PL = YES
 # probability thereshould 
 PL_The = 0.1
 # PN - use Pos and Neg  peaks 
 PN_Peak = PN
 
-#By defult is None BUT change if the spectrum has nut standard name such as: N15HSQC, HMQC, HNCO, HNCA, HNcoCA, HNcaCO, CBCANH, CBCAcoNH
-Spec_type = defult
+#By default is None BUT change if the spectrum does not have standard name such as: N15HSQC, HMQC, HNCO, HNCA, HNcoCA, HNcaCO, CBCANH, CBCAcoNH
+Spec_type = None
