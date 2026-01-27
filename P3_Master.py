@@ -1,7 +1,6 @@
 import os, argparse, subprocess, sys
 import nmrglue as ng
 import numpy as np
-Path = '/home/nmrbox/0016/ajahangiri/Documents/Article_4/MRAi'; sys.path.append(os.path.abspath(Path))
 import MRAi_P3 as P3
 #####################################################################
 def parse_input_file(filename):
