@@ -1,4 +1,4 @@
-﻿# MRAi_P3: Magnetic Resonance processing with Artificial intelligence for Peak Probability Presentarion
+﻿# MRAi_P3: Magnetic Resonance processing with Artificial intelligence for Peak Probability Presentation
 
 ## Authors
 * [Amir Jahangiri](amir.jahangiri@gu.se)
