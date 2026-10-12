@@ -23,15 +23,19 @@ if __name__ == "__main__":
     for input_file in args.inputs:
         params = parse_input_file(input_file)
         Format = params.get('Format', 'Pipe')
+        print("FORMAT",Format)
+        
         S_dirc = params.get('Spec_dirc')
-        if Format != 'Pipe':
-            print("Input file should be in pipe format.")
+        if Format != 'Pipe' and Format != 'Sparky':
+            print(f"Input file should be in {Format} format.")
             sys.exit(1)
         elif not os.path.isfile(S_dirc):
-            print("Input file is not available.")
+            print(f"Input file {S_dirc} is not available.")
             sys.exit(1)
-        else:
+        elif Format == 'Pipe':
             dic, S = ng.pipe.read(S_dirc)
+        elif Format == 'Sparky':
+            dic, S = ng.sparky.read(S_dirc)
 
         if S.ndim == 2:
             Dirc_2D = params.get('Dirc_2D')
@@ -49,12 +53,23 @@ if __name__ == "__main__":
             Fil_The = float(params.get('Fil_The', 0.025**3))
             PN_The = float(params.get('PN_The', 0))
             Slice_Size = int(params.get('Slice_Size', 256))
-            if Support_dirc == 'NO': Support = np.zeros((1,))
-            if Support_dirc != 'NO': _ , Support = ng.pipe.read(Support_dirc)
+            if Support_dirc == 'NO': 
+                Support = np.zeros((1,))
+            if Support_dirc != 'NO': 
+                if Format=="Pipe": 
+                    _ , Support = ng.pipe.read(Support_dirc)
+                elif Format=="Sparky": 
+                    _ , Support = ng.sparky.read(Support_dirc)
+                
             P = P3.StoP3.P3_3D(S,Dirc_3D,Dirc_2D,Skip,Support,Support_axis,Support_The,Fil_The,PN_The,Slice_Size) 
         
         P_dirc = params.get('P3_dirc')
-        ng.pipe.write(P_dirc,dic,np.float32(P),overwrite='True')
+        if Format == 'Pipe':
+            ng.pipe.write(P_dirc,dic,np.float32(P),overwrite='True')
+        elif Format == 'Sparky':
+            ng.sparky.write(P_dirc,dic,np.float32(P),overwrite='True')
+            #ng.pipe.write(P_dirc,dic,np.float32(P),overwrite='True')
+       
 
         if params.get('PL', 'YES') == 'YES':
             PL_The = float(params.get('PL_The', 0.2))
@@ -63,13 +78,15 @@ if __name__ == "__main__":
             P3.P3toP5.main(P_dirc,S_dirc,PN_Peak,PL_The,Format,out=P5_dirc)
             Peaks_dirc = os.path.splitext(S_dirc)[0] + '.peaks'
             Spec_type = params.get('Spec_type','None')              
+            print("SPEC_TYPE",Spec_type)              
             P3.P5toPeaks.main(P5_dirc,S_dirc,Spec_type,Peaks_dirc)
             Tab_dirc = os.path.splitext(S_dirc)[0] + '.tab'
             P3.PeakstoTab.main(Peaks_dirc,S_dirc,Tab_dirc)
         
-        if (params.get('Proj','NO')=='YES') and (S.ndim == 3):
-            subprocess.run(["./3Dto2Dproj.sh", S_dirc])
-            subprocess.run(["./3Dto2Dproj.sh", P_dirc])
-            if params.get('PL', 'YES') == 'YES': P3.Tab3Dto2Dproj.main(Tab_dirc)
+        if (params.get('Proj','NO')=='YES') and (S.ndim == 3): 
+            if Format == 'Pipe':
+                subprocess.run(["./3Dto2Dproj.sh", S_dirc])
+                subprocess.run(["./3Dto2Dproj.sh", P_dirc])
+                if params.get('PL', 'YES') == 'YES': P3.Tab3Dto2Dproj.main(Tab_dirc)
         
 
