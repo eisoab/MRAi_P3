@@ -17,7 +17,7 @@ Please cite our articles if you use this application in your research or publica
 ---
 ## Installation
 1. Install [Miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) by following the Regular installation instructions.
-2. Download MRAi_P3 pacckege from [`Code`](https://github.com/Amir-Jahangiri/MRAi_P3/archive/refs/heads/main.zip).
+2. Download MRAi_P3 package from [`Code`](https://github.com/Amir-Jahangiri/MRAi_P3/archive/refs/heads/main.zip).
 3. Unzip the `MRAi_P3-main.zip` file.
 4. Open Terminal in `MRAi_P3-main` folder.
 5. Create a conda environment with: 
